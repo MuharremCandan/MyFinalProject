@@ -1,11 +1,11 @@
-﻿using Entities.Abstract;
+﻿using Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.Concrete
 {
-    //Çılak Class Kalmasın
+    //Çıplak Class Kalmasın
     public class Category: IEntity
     {
         public int CategoryId { get; set; }
