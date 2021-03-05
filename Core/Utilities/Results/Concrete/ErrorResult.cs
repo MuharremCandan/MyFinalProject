@@ -4,14 +4,14 @@ using System.Text;
 
 namespace Core.Utilities.Results.Concrete
 {
-    public class ErorResult : Result
+    public class ErrorResult : Result
     {
-        public ErorResult(string message) : base(false, message)
+        public ErrorResult(string message) : base(false, message)
         {
 
         }
 
-        public ErorResult() : base(false)
+        public ErrorResult() : base(false)
         {
 
         }
