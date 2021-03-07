@@ -32,8 +32,8 @@ namespace WebAPI
         {
 
             services.AddControllers();
-            services.AddSingleton<IProductService , ProductManager>(); //  lazým mý oldu arka planda bana new le demek içinde data yok ise burada 
-            services.AddSingleton<IProductDal, EfProductDal>();
+            //services.AddSingleton<IProductService , ProductManager>(); //  lazým mý oldu arka planda bana new le demek içinde data yok ise burada 
+            //services.AddSingleton<IProductDal, EfProductDal>();
         
         }
 
