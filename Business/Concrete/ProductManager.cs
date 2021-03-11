@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspect.Autofac;
 using Business.CCS;
 using Business.Constans;
 using Business.ValidationRules.FluentValidation;
@@ -33,9 +34,9 @@ namespace Business.Concrete
         }
 
 
-
-        [ValidationAspect(typeof(ProductValidator))]
-        // loglama = yapılan metoddaki işlemleri kadetme yöntemi 
+        // loglama = yapılan metoddaki işlemleri kadetme yöntemi
+        [SecuredOperation("product.add,admin")]
+        [ValidationAspect(typeof(ProductValidator))]       
         public IResult Add(Product product)
         {
             //business codes  -->iş ihtiyaçlarına uygunluk, meselaehliyet vermek için gerekli ölçütlere sahip mi
