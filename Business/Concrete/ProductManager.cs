@@ -42,8 +42,8 @@ namespace Business.Concrete
             //business codes  -->iş ihtiyaçlarına uygunluk, meselaehliyet vermek için gerekli ölçütlere sahip mi
             // validation codes --> doğrulama kısmı isim şu kadar olmalı vs vs min max karakter.(Yapısı ile ilgili olnlar bura)
 
-            IResult result = BusinessRules.Run(CheckIfProductNameExists(product.ProductName),
-                CheckIfProductCountOfCategoryCorrect(product.CategoryId), CheckIfCategoryNumberMuch());
+            IResult result = BusinessRules.Run(/*CheckIfProductNameExists(product.ProductName),
+                CheckIfProductCountOfCategoryCorrect(product.CategoryId), CheckIfCategoryNumberMuch()*/);
             if (result != null)
             {
                 return result;
@@ -53,17 +53,11 @@ namespace Business.Concrete
 
         }
 
-        [PerformanceAspect(5)]
-        [CacheAspect]
+       // [PerformanceAspect(5)]
+      //  [CacheAspect]
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour == 20)
-            {
-                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
-            // iş kodları bölümü
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(), Messages.ProductsListed);
-
         }
         public IDataResult<List<Product>> GetAllByCategoryId(int id)
         {
@@ -132,13 +126,13 @@ namespace Business.Concrete
         [TransactionScopeAspect]
         public IResult AddTransactionalTest(Product product)
         {
-            
+
             Add(product);
-            if (product.UnitPrice < 10 )
+            if (product.UnitPrice < 10)
             {
                 throw new Exception("");
             }
-            
+
             Add(product);
             return null;
         }

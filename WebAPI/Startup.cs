@@ -43,7 +43,8 @@ namespace WebAPI
             //services.AddSingleton<IProductService , ProductManager>(); //  lazým mý oldu arka planda bana new le demek içinde data yok ise burada 
             //services.AddSingleton<IProductDal, EfProductDal>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
+
+            services.AddCors();
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -77,6 +78,7 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(builder=> builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
