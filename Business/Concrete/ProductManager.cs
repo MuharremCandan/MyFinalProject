@@ -34,7 +34,7 @@ namespace Business.Concrete
 
         }
         // loglama = yapılan metoddaki işlemleri kaydetme yöntemi
-        [SecuredOperation("product.add,admin")]
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")] // ilkte database den getiriir veriyi ikincide ise eski cache deki veriyi getiriri
         public IResult Add(Product product)
